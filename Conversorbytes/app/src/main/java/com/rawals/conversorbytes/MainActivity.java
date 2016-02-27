@@ -13,11 +13,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
+import android.widget.ArrayAdapter;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -32,66 +38,71 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    Spinner sp1;
+    Spinner sp2;
 
+    ArrayAdapter<String> adapter2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+setTitle("Conversor Bytes 1/2");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+// XML
+        // ----------------------------------------------------------------------------------------
 
+        // Creamos el adaptador partiendo de un archivo de recursos
+        final ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this
+                ,R.array.bytes_array
+                , android.R.layout.simple_spinner_item
+        );
+        //adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        RadioButton ob = (RadioButton) findViewById(R.id.radioButton1);
-        RadioButton ok = (RadioButton) findViewById(R.id.radioButton2);
-        RadioButton om = (RadioButton) findViewById(R.id.radioButton3);
-        RadioButton db = (RadioButton) findViewById(R.id.radioButton4);
-        RadioButton dk = (RadioButton) findViewById(R.id.radioButton5);
-        RadioButton dm = (RadioButton) findViewById(R.id.radioButton6);
+        // Conectamos el adaptador al control
+        sp1 = (Spinner) findViewById(R.id.spinner1);
+        sp1.setAdapter(adapter1);
 
-
-
-        ob.setChecked(true);
-        ok.setChecked(false);
-        om.setChecked(false);
-        db.setChecked(true);
-        dk.setChecked(false);
-        dm.setChecked(false);
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        // Evento del Spinner
+        sp1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Snackbar.make(view, "Has seleccionado el " + position, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
 
-
-
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Main2Activity.class));
-
+            public void onNothingSelected(AdapterView<?> parent) {
             }
-
         });
+        // ArrayAdapter
+        // ----------------------------------------------------------------------------------------
+
+        // Array de String que contiene los datos
+        String[] bytes = { "Bytes","Kilobytes","Megabytes" };
+
+        // Creamos el adaptador partiendo del array
+        adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, bytes);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Conectamos el adaptador al control
+        sp2 = (Spinner) findViewById(R.id.spinner2);
+        sp2.setAdapter(adapter2);
+
+
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Recogemos valor del radiogroup1
+               /*//Recogemos valor del radiogroup1
                 RadioGroup grupo = (RadioGroup) findViewById(R.id.radioGroup);
                 int valor = grupo.indexOfChild(grupo.findViewById(grupo.getCheckedRadioButtonId()));
 
                 //Recogemos valor del radiogroup2
                 RadioGroup grupo2 = (RadioGroup) findViewById(R.id.radioGroup2);
                 int valor2 = grupo2.indexOfChild(grupo2.findViewById(grupo2.getCheckedRadioButtonId()));
-
+*/
                 EditText et1 = (EditText) findViewById(R.id.editText);
                 int n = 0;
 
@@ -107,16 +118,13 @@ public class MainActivity extends AppCompatActivity {
 
                 // Cargamos los datos en el Intent
                 i.putExtra("DATO", n);
-                i.putExtra("VALOR", valor);
-                i.putExtra("VALOR2", valor2);
+                i.putExtra("VALOR", sp1.getSelectedItemPosition());
+                i.putExtra("VALOR2", sp2.getSelectedItemPosition());
 
                 // Arrancar la actividad
                 startActivity(i);
             }
         });
-
-
-
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.

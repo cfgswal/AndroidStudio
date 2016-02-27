@@ -26,26 +26,11 @@
         android:layout_alignParentStart="true"
         android:id="@+id/radioGroup">
 
-        <RadioButton
-            android:layout_width="wrap_content"
+        <Spinner
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bytes"
-            android:id="@+id/radioButton1"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kilobytes"
-            android:id="@+id/radioButton2"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Megabytes"
-            android:id="@+id/radioButton3"
-            android:checked="false" />
+            android:id="@+id/spinner1"
+            android:layout_gravity="center_horizontal" />
     </RadioGroup>
 
     <TextView
@@ -54,7 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Cantidad:"
         android:id="@+id/textView2"
-        android:layout_below="@+id/radioGroup"
+        android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -65,15 +50,17 @@
         android:id="@+id/editText"
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/radioGroup" />
+        android:layout_marginTop="22dp"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Destino"
         android:id="@+id/textView3"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -82,26 +69,6 @@
         android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true">
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bytes"
-            android:id="@+id/radioButton4"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="KB"
-            android:id="@+id/radioButton5"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MB"
-            android:id="@+id/radioButton6"
-            android:checked="false" />
     </RadioGroup>
 
     <Button
@@ -109,8 +76,15 @@
         android:layout_height="wrap_content"
         android:text="Calcular"
         android:id="@+id/button"
-        android:layout_marginTop="89dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="73dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
         android:layout_below="@+id/radioGroup2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
