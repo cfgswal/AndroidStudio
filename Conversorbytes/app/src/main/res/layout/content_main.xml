@@ -19,19 +19,33 @@
         android:text="Origen:"
         android:id="@+id/textView" />
 
-    <RadioGroup
+    <!-- <RadioButton
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Kilobytes"
+         android:id="@+id/radioButton2"
+         android:checked="false" />
+
+     <RadioButton
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Megabytes"
+         android:id="@+id/radioButton3"
+         android:checked="false" />
+     <RadioGroup
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/textView"
+         android:layout_alignParentStart="true"
+         android:id="@+id/radioGroup" />
+ </RadioGroup>-->
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:id="@+id/spinner1"
         android:layout_alignParentStart="true"
-        android:id="@+id/radioGroup">
+        android:layout_below="@+id/textView" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner1"
-            android:layout_gravity="center_horizontal" />
-    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,18 +72,18 @@
         android:layout_height="wrap_content"
         android:text="Destino"
         android:id="@+id/textView3"
-        android:layout_below="@+id/radioGroup"
+        android:layout_below="@+id/spinner1"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="43dp" />
 
-    <RadioGroup
+    <!--<RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/radioGroup2"
         android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true">
 
-    </RadioGroup>
+    </RadioGroup>-->
 
     <Button
         android:layout_width="wrap_content"
@@ -84,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinner2"
-        android:layout_below="@+id/radioGroup2"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

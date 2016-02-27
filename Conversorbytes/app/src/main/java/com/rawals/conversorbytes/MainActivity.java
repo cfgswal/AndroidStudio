@@ -1,8 +1,8 @@
 package com.rawals.conversorbytes;
 
-import android.app.AlertDialog;
-import android.app.DialogFragment;
-import android.content.Context;
+
+
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -118,6 +118,8 @@ setTitle("Conversor Bytes 1/2");
 
                 // Cargamos los datos en el Intent
                 i.putExtra("DATO", n);
+               // i.putExtra("VALOR", valor);
+                //i.putExtra("VALOR2", valor2);
                 i.putExtra("VALOR", sp1.getSelectedItemPosition());
                 i.putExtra("VALOR2", sp2.getSelectedItemPosition());
 
